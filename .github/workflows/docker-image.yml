@@ -15,5 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile -t ghost00shell/testrepo:latest
+      run: |
+        docker login -u ghost00shell -p ${{ secrets.docker_test_token }}
+        docker build . --file Dockerfile -t ghost00shell/testrepo:latest
       
